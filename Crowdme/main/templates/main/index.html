@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Icrowdme</title>
+	<link rel="shortcut icon" type="image" href="{% static 'main/images/favicon.png' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/slick.css' %}"/>
+</head>
+<body>
+	<section class="menu">
+		<nav class="menu__inner">
+			<div class="logo">
+				<a href="#">
+					<img src="{% static 'main/images/logo.png' %}" alt=".!.">
+					<p>Crowdme</p>
+				</a>
+
+			</div>
+			<div class="menu-list">
+				<ul class="menu-items">
+					<li class="menu-item"><a href="#">home</a></li>
+					<li class="menu-item"><a href="#">how it works</a></li>
+					<li class="menu-item"><a href="#">discover a project</a></li>
+					<li class="menu-item"><a href="#">blog</a></li>
+					<li class="menu-item"><a href="#">find out more</a></li>
+				</ul>
+			</div>
+			{% if not user_in %}
+			<div class="menu-button">
+				<a href="{% url 'login' %}">Login</a>
+			</div>
+			{% else %}
+			<div class="menu__user">
+				<a href="{% url 'user_settings' user_name %}" class="menu__user-name">{{ user_name }}</a>
+				<form method="post" class="menu__user-form">
+					{% csrf_token %}
+					<input type="submit" value="Exit" class="menu__user-button">
+				</form>
+			</div>
+			{% endif %}
+		</nav>
+	</section>
+	<section class="banana">
+		<div class="container">
+			<div class="banana__inner">
+				<div class="banana__text">
+					<p>Intellectual Property has the Shelf Life
+						<span>of a Banana.</span>
+					</p>
+				</div>
+				<div class="banana__button">
+					<a href="#">Become a Member</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="slick">
+			<div class="wrapper">
+				<div class="slick-item" style="background-image: url({% static 'main/images/banana.png' %});" ></div>
+				<div class="slick-item" style="background-image: url({% static 'main/images/banana.png' %});"></div>
+				<div class="slick-item" style="background-image: url({% static 'main/images/banana.png' %})";"></div>
+			</div>
+			<div class="blur"></div>
+		</div>
+	</section>
+
+	<section class="works">
+		<div class="container">
+			<div class="works__inner">
+				<img src="{% static 'main/images/circle1.png' %}" alt=".!.">
+				<p class="works__title">Our work is the presentation
+				of our capabilities.</p>
+				<p class="works__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+				<p class="works__text">
+				Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+			</div>
+		</div>
+	</section>
+	<section class="hard">
+		<div class="container">
+			<div class="hard__inner">
+				<div class="hard1 hards">
+					<button class="hard1__button hard__buttons">
+						<div class="hard__number active hnum1"><p>1</p></div>
+						<div class="hard__text active hnum1"><p>Simple</p></div>
+					</button>
+				</div>
+				<div class="hard2 hards">
+					<button class="hard2__button hard__buttons">
+						<div class="hard__number hnum2"><p>2</p></div>
+						<div class="hard__text hnum2"><p>Transparent</p></div>
+					</button>
+				</div>
+				<div class="hard3 hards">
+					<button class="hard3__button hard__buttons">
+						<div class="hard__number hnum3"><p>3</p></div>
+						<div class="hard__text hnum3"><p>Collaborative</p></div>
+					</button>
+				</div>
+				<div class="hard__button-slider" style="left: 0%;"></div>
+			</div>
+
+			<div class="hard__slides">
+
+				<div class="hard__slide">
+					<div class="hard__more hard__more--first active">
+						<div class="hard1__block">
+							<div class="hard1__img">
+								<img src="{% static 'main/images/glasses.png' %}" alt=".!.">
+							</div>
+							<div class="hard1__texts">
+								<div class="hard1__title">
+									Browse projects, like booking a hotel online !
+								</div>
+								<div class="hard1__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do lore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								</div>
+							</div>
+						</div>
+						<div class="hard__more-2">
+							<div class="hard2__block1 hard__block">
+								<div class="hard2__img">
+									<img src="{% static 'main/images/sofa.png' %}" alt=".!.">
+								</div>
+								<div class="hard2__texts">
+									<div class="hard2__title">
+										Find Properties
+									</div>
+									<div class="hard2__text hard__slide-text">
+										Sign up to browse the portfolio.
+										Your journey to becoming a real estate baron starts here.
+									</div>
+									<div class="hard2__button-1 hard2__buttons">
+										<a href="#">Become A Member</a>
+									</div>
+								</div>
+							</div>
+							<div class="hard2__block2 hard__block">
+								<div class="hard2__img">
+									<img src="{% static 'main/images/money.png' %}" alt=".!.">
+								</div>
+								<div class="hard2__texts">
+									<div class="hard2__title">
+										Find Buyers
+									</div>
+									<div class="hard2__text hard__slide-text">
+										Sign up to browse the portfolio.
+										Your journey to becoming a real estate baron starts here.
+									</div>
+									<div class="hard2__button-2 hard2__buttons">
+										<a href="#">Submit Your Project</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="hard__more hard__more--second" >
+						<div class="hard1__block">
+							<div class="hard1__img">
+								<img src="{% static 'main/images/glasses.png' %}" alt=".!.">
+							</div>
+							<div class="hard1__texts">
+								<div class="hard1__title">
+									Browse praaaacts, like booking a hotel online !
+								</div>
+								<div class="hard1__text hard__slide-text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do lore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								</div>
+							</div>
+						</div>
+						<div class="hard__more-2">
+							<div class="hard2__block1 hard__block">
+								<div class="hard2__img">
+									<img src="{% static 'main/images/sofa.png' %}" alt=".!.">
+								</div>
+								<div class="hard2__texts">
+									<div class="hard2__title">
+										Find Properties
+									</div>
+									<div class="hard2__text hard__slide-text">
+										Sign up to browse the portfolio.
+										Your journey to becoming a real estate baron starts here.
+									</div>
+									<div class="hard2__button-1 hard2__buttons">
+										<a href="#">Become A Member</a>
+									</div>
+								</div>
+							</div>
+							<div class="hard2__block2 hard__block">
+								<div class="hard2__img">
+									<img src="{% static 'main/images/money.png' %}" alt=".!.">
+								</div>
+								<div class="hard2__texts">
+									<div class="hard2__title">
+										Find Buyers
+									</div>
+									<div class="hard2__text hard__slide-text">
+										Sign up to browse the portfolio.
+										Your journey to becoming a real estate baron starts here.
+									</div>
+									<div class="hard2__button-2 hard2__buttons">
+										<a href="#">Submit Your Project</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="hard__more hard__more--third">
+						<div class="hard1__block">
+							<div class="hard1__img">
+								<img src="{% static 'main/images/glasses.png' %}" alt=".!.">
+							</div>
+							<div class="hard1__texts">
+								<div class="hard1__title">
+									Browse projects, like booking a hotel online !
+								</div>
+								<div class="hard1__text hard__slide-text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do lore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								</div>
+							</div>
+						</div>
+						<div class="hard__more-2">
+							<div class="hard2__block1 hard__block">
+								<div class="hard2__img">
+									<img src="{% static 'main/images/sofa.png' %}" alt=".!.">
+								</div>
+								<div class="hard2__texts">
+									<div class="hard2__title">
+										Find Properties
+									</div>
+									<div class="hard2__text hard__slide-text">
+										Sign up to browse the portfolio.
+										Your journey to becoming a real estate baron starts here.
+									</div>
+									<div class="hard2__button-1 hard2__buttons">
+										<a href="#">Become A Member</a>
+									</div>
+								</div>
+							</div>
+							<div class="hard2__block2 hard__block">
+								<div class="hard2__img">
+									<img src="{% static 'main/images/money.png' %}" alt=".!.">
+								</div>
+								<div class="hard2__texts">
+									<div class="hard2__title">
+										Find Buyers
+									</div>
+									<div class="hard2__text hard__slide-text">
+										Sign up to browse the portfolio.
+										Your journey to becoming a real estate baron starts here.
+									</div>
+									<div class="hard2__button-2 hard2__buttons">
+										<a href="#">Submit Your Project</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<section class="featured">
+		<div class="container">
+			<div class="featured__inner">
+				<div class="featured1__block">
+					<div class="featured1__texts">
+						<p class="featured1__title">
+							Featured Projects
+						</p>
+						<p class="featured1__text">
+							Brief details of new and popular projects. To view full listings, you will be required to
+							sign up and become a member.
+						</p>
+					</div>
+					<div class="featured1__button">
+						<a href="#" class="featured1__a">Become a Member</a>
+					</div>
+				</div>
+
+				<div class="featured2__blocks">
+
+
+					{% for project in projects %}
+					<div class="featured2__block">
+						{% if project.is_new %}
+						<p class="featured2__new">
+							NEW
+						</p>
+						<div class="featured2_new-bg"></div>
+						{% endif %}
+						<div class="featured2__first" style="background-image: url({{ project.image_file.url }})">
+							<div class="featured2__text-button--block">
+								<a href="#" class="featured2__text-button">
+									From <b>GBP  {{ project.cost }}</b>
+								</a>
+							</div>
+						</div>
+						<div class="featured2__second">
+							<div class="featured2__text-block">
+								<p class="featured2__title">
+									{{ project.title }}
+								</p>
+								<p class="featured2__text">
+									{{ project.description }}
+								</p>
+								<div class="featured2__lines" style="width: 100%">
+									<div class="featured2__line"></div>
+									<div class="featured2__line--overlay" style="width: {{ project.funded }}%"></div>
+								</div>
+								<div class="featured2__double">
+									<p class="featured2__double-text">{{ project.funded }}% Funded</p>
+									<p class="featured2__double-text">{{ project.days_left }} Days Left</p>
+								</div>
+								<div class="featured2__line--2"></div>
+								<div class="featured2__bottom">
+									<a href="{% url 'project' project.pk %}" class="featured2__bottom-text">
+										See Project Details
+									</a>
+									<img src="{% static 'main/images/arrow__bottom.svg' %}" alt=".!.">
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="community" style="background-image: url({% static 'main/images/community.jpg' %});">
+		<div class="container">
+			<div class="community__inner">
+				<div class="community__texts">
+					<p class="community__title">
+						Be Part of a Growing International Community
+					</p>
+					<p class="community__text">
+						One of the challenges in networking is everybody thinks it's making cold calls to strangers. Actually, it's the people who already have strong trust relationships with you
+					</p>
+				</div>
+				<div class="community__messages">
+					<div class="community__message">
+						<div class='community__message-message'>
+							<p class="community__message-title">
+								One of the Best
+							</p>
+							<p class="community__message-text">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod taempor incididunt ut labore et dolore magna aliqua.
+							</p>
+						</div>
+						<div class="community__message-person">
+							<img src="{% static 'main/images/message-person1.jpg' %}" alt=".!.">
+							<p>David Beckham</p>
+						</div>
+					</div>
+					<div class="community__message">
+						<div class='community__message-message'>
+							<p class="community__message-title">
+								Exellent Service
+							</p>
+							<p class="community__message-text">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod taempor incididunt ut labore et dolore magna aliqua.
+							</p>
+						</div>
+						<div class="community__message-person">
+							<img src="{% static 'main/images/message-person2.jpg' %}" alt=".!.">
+							<p>David Beckham</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="bottom">
+		<img src="{% static 'main/images/bottom.png' %}" alt=".!." class="bottom__img">
+		<p>Copyright © 2001 - 2014  Cssauthor.com</p>
+	</section>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="{% static 'main/js/slick.min.js' %}"></script>
+	<script src="{% static 'main/js/main.js' %}"></script>
+</body>
+</html>
