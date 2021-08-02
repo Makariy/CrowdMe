@@ -1,45 +1,37 @@
 from django.http import HttpRequest, HttpResponse
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 import json
 import os
+from django.contrib.auth import get_user
 
 
-class StringHasher:
-    @staticmethod
-    def get_hash(s):
-        number = 0
-        for letter in s:
-            number += ((ord(letter)**2) << 2 >> 1)
 
-        result = str(number)
-        ret = ''
-        for i in range(0, len(result), 2):
-            ret += chr(int(result[i] + result[i+1]))
+class PageBase:
+    def __init__(self):
+        pass
 
-        return ret
+    def handle(self, request: HttpRequest, *params, **args):
+        if request.method == 'POST':
+            return self.post(request, *params, **args)
+        else:
+            return self.get(request, *params, **args)
 
+    def post(self, request: HttpRequest, *params, **args) -> HttpResponse:
+        return HttpResponse()
 
-class ClientsProfilingFile:
-    def __init__(self, path='clients', file_name='clients.json'):
-        if not os.path.exists(path):
-            os.mkdir(path)
+    def get(self, request: HttpRequest, *params, **args) -> HttpResponse:
+        return HttpResponse()
 
-        self.path = path
-        self.file_name = file_name
-        self.file = open(self.path + '/' + self.file_name, 'w+')
-        self.json_file = {}
-        try:
-            self.json_file = json.load(self.file)
-        except json.decoder.JSONDecodeError:
-            pass
+    def set_cookies(self, response, cookies={}, **kwargs):
+        if not cookies == {}:
+            if not isinstance(cookies, type({})):
+                raise TypeError('Parameter cookies was not the correct type: type(cookies) = ' + str(type(cookies)))
+            else:
+                for key in cookies:
+                    response.set_cookie(key, cookies[key])
+        else:
+            for key in kwargs:
+                response.set_cookie(key, cookies[key])
 
-    def write(self):
-        json.dump(self.json_file, self.file)
-        self.file.flush()
-
-    def add_client(self, data):
-        if data[0] not in self.json_file:
-            self.json_file[data[0]] = data[1]
-
-    def __del__(self):
-        self.write()
 

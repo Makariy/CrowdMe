@@ -93,6 +93,10 @@ body{
 .menu-items{
 	display: flex;
 }
+.menu-list {
+    display: flex;
+    align-items: center;
+}
 .menu-item{
 	padding-right: 30px;
 	text-transform: uppercase;

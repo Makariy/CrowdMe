@@ -19,11 +19,13 @@
 				<div class="login__fields">
 					<form method="post" class="login__form">
 						{% csrf_token %}
-						{{ form.name }}
-						{{ form.password }}
-                        {{ form.mail }}
+						<input type="text" name="name" id="id_name">
+						<input type="password" name="password" id="id_password">
+						<input type="email" name="mail" id="id_mail">
 						<input class="login__submit" type="submit" value="Sign up">
+						{% if error %}
 						<p class="login__errors">{{ error }}</p>
+						{% endif %}
 					</form>
 				</div>
 				<p class="login__help">

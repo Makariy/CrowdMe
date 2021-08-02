@@ -39,21 +39,3 @@ class Project(models.Model):
         return s
 
 
-class User(models.Model):
-    name = models.CharField(max_length=40, null=False, db_index=True, verbose_name='Name')
-    password = models.CharField(max_length=40, null=False, db_index=False, verbose_name='Password')
-    mail = models.EmailField(null=True, verbose_name='E-Mail')
-    registered_date = models.DateField(auto_now=True, verbose_name='Registered date')
-
-    class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
-        ordering = ['-name']
-
-    def __str__(self):
-        s = ''
-        s += 'Name: ' + str(self.name) + '\n'
-        s += 'Password: ' + str(self.password) + '\n'
-        s += 'Mail: ' + str(self.mail) + '\n'
-        s += 'Registered date: ' + str(self.registered_date)
-        return s

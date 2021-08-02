@@ -37,7 +37,7 @@
 			</div>
 			{% else %}
 			<div class="menu__user">
-				<a href="{% url 'user_settings' user_name %}" class="menu__user-name">{{ user_name }}</a>
+				<p class="menu__user-name">{{ user_name }}</p>
 				<form method="post" class="menu__user-form">
 					{% csrf_token %}
 					<input type="submit" value="Exit" class="menu__user-button">
